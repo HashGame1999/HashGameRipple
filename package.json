@@ -1,0 +1,8 @@
+{
+  "type": "module",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "sqlite3": "^5.1.7",
+    "xrpl": "^4.1.0"
+  }
+}
