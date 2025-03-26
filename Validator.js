@@ -384,7 +384,7 @@ async function genDrawResult(db, open_ledger_index, close_ledger_index, init_poo
   }))
 
   // gen jackpot code
-  let strDrawCodes = `${HashGame.Name}-v${HashGame.Version}-${draw_id}:${ticket_codes.join(',')}`
+  let strDrawCodes = `${draw_id}:${ticket_codes.join(',')}`
   let hashDrawCodes = SHA512(strDrawCodes)
   let jackpot_code = hashDrawCodes.substring(0, HashGame.JackpotCodeLength)
 
