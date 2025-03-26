@@ -2,7 +2,7 @@ import fs from 'fs'
 import sqlite3 from 'sqlite3'
 import xrpl, { dropsToXrp, convertHexToString } from 'xrpl'
 import { CoinCode, ServerURL, TxType, TxResult, XRP2DropRate, DBPath, HashGame } from './Const.js'
-import { dbGet, dbAll, dbRun, SHA512, genFixedPrizeAmount, genFixedPrizeSetting, fetchRecentClosedLedgerIndex, genTicketCode, Drop2FloorXRP } from './Util.js'
+import { dbGet, dbAll, dbRun, SHA512, genFixedPrizeAmount, genFixedPrizeSetting, fetchRecentClosedLedgerIndex, genTicketCode, Drop2FloorXRP, genDrawID } from './Util.js'
 
 const DrawLogDir = '/log'
 const client = new xrpl.Client(ServerURL)
@@ -347,7 +347,7 @@ async function checkOperatorPayment(db, operator_account, draw_interval) {
 }
 
 async function genDrawResult(db, open_ledger_index, close_ledger_index, init_pool_in_drop) {
-  let draw_id = `${CoinCode}#${open_ledger_index}`
+  let draw_id = genDrawID(open_ledger_index)
   // get all valid payment in this draw
   let sql = `SELECT * FROM GAME_TXS WHERE tx_type = '${TxType.Payment}' AND tx_result = '${TxResult.Success}' AND dest = '${HashGame.GameAccount}' AND ledger_index >= ${open_ledger_index} AND ledger_index <= ${close_ledger_index} ORDER BY ledger_index ASC, tx_index ASC`
   let current_draw_payments = await dbAll(db, sql)

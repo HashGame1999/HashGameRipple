@@ -1,5 +1,5 @@
-## HashGame XRP5  Introduction:
-HashGame XRP5 is a online blockchain-based game that's transparent, fair, and verifiable, offering the following advantages:
+## HashGame XRP@5  Introduction:
+HashGame XRP@5 is a online blockchain-based game that's transparent, fair, and verifiable, offering the following advantages:
 - Open & Verifiable: all game operations are running on xrpl, could be validated.
 - High payout rate: 92% of all income will be used to payout, only 8% for operating.
 - Massive jackpot: the jackpot cuts almost 50% of the prize pool.
@@ -7,9 +7,13 @@ HashGame XRP5 is a online blockchain-based game that's transparent, fair, and ve
 - High-Frequency breakdown: a draw consist of 10 thousand ledgers, less than half-day.
 - In time payouts: the jackpot and other prize will be paid before next draw.
 
-## HashGame XRP5 starts at XRP Ledger#95680001.
+### Draw ID format: HashGame-XRP@5-v1.0#95680001
+- XRP denotes all transactions shall be settled exclusively in XRP through xrpl.
+- 5 denotes the JackpotCode length.
+- 1.0 defines the version of game rules, more game rules detail at [Const.js](https://github.com/HashGame1999/HashGameRipple/blob/main/Const.js).
+- 95680001 denotes this draw begins at xrp ledger#95680001.
 
-## HashGame XRP5  Rules:
+## HashGame XRP@5  Rules:
 - 1 XRP gets you a HashGame code, N XRP gets you N codes.
 - Code generation is tied to payment transaction hash and is unpredictable.
 - Jackpot code's generation is tied to entire codes of a draw, which means ever code will affect the final jackpot code, and is totally unpredictable.
