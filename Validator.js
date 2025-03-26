@@ -375,7 +375,7 @@ async function genDrawResult(db, open_ledger_index, close_ledger_index, init_poo
   }
 
   // save tickets to file
-  let draw_ticket_path = `.${DrawLogDir}/${HashGame.Name}-v${HashGame.Version}-${draw_id}-ticket.json`
+  let draw_ticket_path = `.${DrawLogDir}/${draw_id}-ticket.json`
   fs.writeFileSync(draw_ticket_path, JSON.stringify({
     DrawId: draw_id,
     OpenLedgerIndex: open_ledger_index,
