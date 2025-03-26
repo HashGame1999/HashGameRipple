@@ -261,8 +261,8 @@ async function checkGamePayment(db, game_account, operator_account, draw_interva
       }
     } else {
       // try to link pay_tx and draw
-      let close_ledger_index = parseInt(draw.draw_id.split('#')[1]) + draw_interval
-      sql = `SELECT * FROM GAME_TXS WHERE ledger_index >= ${close_ledger_index} AND tx_type = '${TxType.Payment}' AND tx_result = '${TxResult.Success}' AND sour = '${game_account}' ORDER BY ledger_index ASC, tx_index ASC`
+      let close_ledger_index = parseInt(draw.draw_id.split('#')[1]) + draw_interval - 1
+      sql = `SELECT * FROM GAME_TXS WHERE ledger_index > ${close_ledger_index} AND tx_type = '${TxType.Payment}' AND tx_result = '${TxResult.Success}' AND sour = '${game_account}' ORDER BY ledger_index ASC, tx_index ASC`
       let payments = await dbAll(db, sql)
       let match_flag = false
       for (let j = 0; j < payments.length; j++) {
@@ -314,8 +314,8 @@ async function checkOperatorPayment(db, operator_account, draw_interval) {
       }
     } else {
       // try to link pay_tx and breakdown
-      let close_ledger_index = parseInt(breakdown.draw_id.split('#')[1]) + draw_interval
-      sql = `SELECT * FROM OPERATOR_TXS WHERE ledger_index >= ${close_ledger_index} AND tx_type = '${TxType.Payment}' AND tx_result = '${TxResult.Success}' AND sour = '${operator_account}' ORDER BY ledger_index ASC, tx_index ASC`
+      let close_ledger_index = parseInt(breakdown.draw_id.split('#')[1]) + draw_interval - 1
+      sql = `SELECT * FROM OPERATOR_TXS WHERE ledger_index > ${close_ledger_index} AND tx_type = '${TxType.Payment}' AND tx_result = '${TxResult.Success}' AND sour = '${operator_account}' ORDER BY ledger_index ASC, tx_index ASC`
       let payments = await dbAll(db, sql)
       let match_flag = false
 
@@ -532,7 +532,7 @@ async function genDrawResult(db, open_ledger_index, close_ledger_index, init_poo
   }
 
   // save pay_memos to file
-  let pay_memos_path = `.${DrawLogDir}/${HashGame.Name}-v${HashGame.Version}-${draw_id}-pay_memo.json`
+  let pay_memos_path = `.${DrawLogDir}/${draw_id}-pay_memo.json`
   fs.writeFileSync(pay_memos_path, JSON.stringify({
     DrawId: draw_id,
     OpenLedgerIndex: open_ledger_index,
@@ -551,7 +551,7 @@ async function genDrawResult(db, open_ledger_index, close_ledger_index, init_poo
   }
 
   // save draw result to file
-  let draw_result_path = `.${DrawLogDir}/${HashGame.Name}-v${HashGame.Version}-${draw_id}.json`
+  let draw_result_path = `.${DrawLogDir}/${draw_id}.json`
   fs.writeFileSync(draw_result_path, JSON.stringify(draw_result))
 
   // save draw to db
