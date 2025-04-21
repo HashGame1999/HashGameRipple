@@ -1,6 +1,6 @@
 import crypto from 'crypto'
 import xrpl, { xrpToDrops, convertStringToHex } from 'xrpl'
-import { CoinCode, XRP2DropRate, TxType, RippleEpoch, HashGame } from './Const.js'
+import { XRP2DropRate, TxType, RippleEpoch, HashGame } from './Const.js'
 
 async function dbAll(db, sql) {
   return new Promise((resolve, reject) => {
@@ -57,7 +57,7 @@ function genUnixTimestamp(ripple_time) {
 }
 
 function genDrawID(open_ledger_index) {
-  let draw_id = `${HashGame.Name}-${CoinCode}@${HashGame.JackpotCodeLength}-v${HashGame.Version}#${open_ledger_index}`
+  let draw_id = `${HashGame.Name}-${HashGame.CoinCode}@${HashGame.JackpotCodeLength}-v${HashGame.Version}#${open_ledger_index}`
   return draw_id
 }
 
@@ -80,7 +80,7 @@ function genFixedPrizeSetting(jackpot_code_length, fixed_prize_amount) {
     const prize_rank = fixed_prize_amount_length - i + 1
     json[`Rank#${prize_rank}`] = {
       MatchCodeLength: jackpot_code_length - prize_rank,
-      Amount: `${prize}${CoinCode}`
+      Amount: `${prize}${HashGame.CoinCode}`
     }
   }
   return json

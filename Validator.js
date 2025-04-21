@@ -1,7 +1,7 @@
 import fs from 'fs'
 import sqlite3 from 'sqlite3'
 import xrpl, { dropsToXrp, convertHexToString } from 'xrpl'
-import { CoinCode, ServerURL, TxType, TxResult, XRP2DropRate, DBPath, HashGame } from './Const.js'
+import { ServerURL, TxType, TxResult, XRP2DropRate, DBPath, HashGame } from './Const.js'
 import { dbGet, dbAll, dbRun, SHA512, genFixedPrizeAmount, genFixedPrizeSetting, fetchRecentClosedLedgerIndex, genTicketCode, Drop2FloorXRP, genDrawID } from './Util.js'
 
 const DrawLogDir = '/log'
@@ -252,7 +252,7 @@ async function checkGamePayment(db, game_account, operator_account, draw_interva
           let residual_pool_in_drop = draw.residual_pool_in_drop - game_pay_tx.fee
           sql = `UPDATE DRAWS SET is_paid = true, pay_tx_hash = '${game_pay_tx.tx_hash}', pay_fee_in_drop = ${game_pay_tx.fee}, residual_pool_in_drop = ${residual_pool_in_drop} WHERE draw_id = '${draw.draw_id}'`
           await dbRun(db, sql)
-          console.log(`GamePaymentDone1(link through hash): Draw(${draw.draw_id}) TxHash(${game_pay_tx.tx_hash})    Amount(${draw.pay_amount}${CoinCode})`)
+          console.log(`GamePaymentDone1(link through hash): Draw(${draw.draw_id}) TxHash(${game_pay_tx.tx_hash})    Amount(${draw.pay_amount}${HashGame.CoinCode})`)
         } else {
           console.log(`GamePaymentError1: ${draw.draw_id}(${draw.pay_tx_hash}) invalid...`)
         }
@@ -275,7 +275,7 @@ async function checkGamePayment(db, game_account, operator_account, draw_interva
             let residual_pool_in_drop = draw.residual_pool_in_drop - payment.fee
             sql = `UPDATE DRAWS SET is_paid = true, pay_tx_hash = '${payment.tx_hash}', pay_fee_in_drop = ${payment.fee}, residual_pool_in_drop = ${residual_pool_in_drop} WHERE draw_id = '${draw.draw_id}'`
             await dbRun(db, sql)
-            console.log(`GamePaymentDone2(link through memo): Draw(${draw.draw_id}) TxHash(${payment.tx_hash})    Amount(${draw.pay_amount}${CoinCode})`)
+            console.log(`GamePaymentDone2(link through memo): Draw(${draw.draw_id}) TxHash(${payment.tx_hash})    Amount(${draw.pay_amount}${HashGame.CoinCode})`)
             match_flag = true
             break
           } else {
@@ -287,7 +287,7 @@ async function checkGamePayment(db, game_account, operator_account, draw_interva
       }
 
       if (!match_flag) {
-        console.log(`GamePaymentError3: no match Payment to Draw(${draw.draw_id}) Amount(${draw.pay_amount}${CoinCode})`)
+        console.log(`GamePaymentError3: no match Payment to Draw(${draw.draw_id}) Amount(${draw.pay_amount}${HashGame.CoinCode})`)
       }
     }
   }
@@ -328,7 +328,7 @@ async function checkOperatorPayment(db, operator_account, draw_interval) {
           if (payment.dest == breakdown.address && dropsToXrp(payment.delivered_amount) == breakdown.amount_total) {
             sql = `UPDATE BREAKDOWNS SET is_paid = true, pay_tx_hash = '${payment.tx_hash}', pay_fee_in_drop = ${payment.fee} WHERE ticket_tx_hash = '${breakdown.ticket_tx_hash}'`
             await dbRun(db, sql)
-            console.log(`BreakdownPayment: Done Draw(${breakdown.draw_id}) Address(${breakdown.address}) TicketTxHash(${breakdown.ticket_tx_hash}) Amount(${breakdown.amount_total}${CoinCode})`)
+            console.log(`BreakdownPayment: Done Draw(${breakdown.draw_id}) Address(${breakdown.address}) TicketTxHash(${breakdown.ticket_tx_hash}) Amount(${breakdown.amount_total}${HashGame.CoinCode})`)
             match_flag = true
             break
           } else {
@@ -340,7 +340,7 @@ async function checkOperatorPayment(db, operator_account, draw_interval) {
       }
 
       if (!match_flag) {
-        console.log(`BreakdownPayment: no match Draw(${breakdown.draw_id}) Address(${breakdown.address}) TicketTxHash(${breakdown.ticket_tx_hash}) Amount(${breakdown.amount_total}${CoinCode})`)
+        console.log(`BreakdownPayment: no match Draw(${breakdown.draw_id}) Address(${breakdown.address}) TicketTxHash(${breakdown.ticket_tx_hash}) Amount(${breakdown.amount_total}${HashGame.CoinCode})`)
       }
     }
   }
