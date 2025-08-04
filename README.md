@@ -7,11 +7,11 @@ HashGame XRP@5 is a online blockchain-based game that's transparent, fair, and v
 - High-Frequency breakdown: a draw consist of 1 thousand ledgers, less than half-day.
 - In time payouts: the jackpot and other prize will be paid before next draw.
 
-### Draw ID format: HashGame-XRP@5-v1.0#98880001
+### Draw ID format: HashGame-XRP@5-v1.0#96660001
 - XRP denotes all transactions shall be settled exclusively in XRP through xrpl.
 - 5 denotes the JackpotCode length.
-- 1.0 defines the version of game rules.
-- 98880001 denotes this draw begins at xrp ledger#98880001.
+- 1.0 defines the version of game rules, more game rules detail at [Const.js](https://github.com/HashGame1999/HashGameRipple/blob/main/Const.js).
+- 96660001 denotes this draw begins at xrp ledger#96660001.
 
 ## HashGame XRP@5 Rules:
 - 1 XRP gets you a HashGame code, N XRP gets you N codes.
@@ -21,7 +21,7 @@ HashGame XRP@5 is a online blockchain-based game that's transparent, fair, and v
 ## How to play:
 ### Buy game code:
 -  **GameAccount**(**rXRP75idnwWTuukPeSkpbeeKGkhyysVW8**)
-- Draw#98880001 is composed of xrp ledger from 98880001 to 98881000,
+- Draw#96660001 is composed of xrp ledger from 96660001 to 98880000,
 - During those ledger, payment to the **GameAccount** will get a ticket.
 - A ticket of N code will be generated for a payment larger than N XRP , for example: 
 	- Payment of 1 XRP gets 1 code: first 5 character of payment tx_hash
@@ -42,9 +42,8 @@ Just tell your friend to set referral address of first payment transaction to yo
 
 ## Promotional Plans
 ### Shareholder Plan: 
-Any XRP holder who send 10000 XRP to **rBoy4AAAAA9qxv7WANSdP5j5y59NP6soJS** before XRP Ledger#98880000 becomes our shareholder, participate in annual dividends.
-### Trial Plan
-Any XRP holder before Ledger#98000000 get 1 code refund(from operating fee) for game trial.
+Any XRP holder who send 10000 XRP to **rBoy4AAAAA9qxv7WANSdP5j5y59NP6soJS** before XRP Ledger#96660001 becomes our shareholder, participate in annual dividends.
+
 ### Early bird Plan:
 - First player buys 10 code get 160 XRP(from operating fee) award.
 - First player buys 100 codes get 800 XRP(from operating fee) award.
