@@ -4,14 +4,14 @@ HashGame XRP@5 is a online blockchain-based game that's transparent, fair, and v
 - High payout rate: 92% of all income will be used to payout, only 8% for operating.
 - Massive jackpot: the jackpot cuts almost 50% of the prize pool.
 - Big winnings: 4096 XRP, 256 XRP, 64 XRP for 1st, 2nd, 3rd prize respectively.
-- High-Frequency breakdown: a draw consist of 1 thousand ledgers, less than half-day.
+- High-Frequency breakdown: a draw consist of 1000 ledgers, less than half-day.
 - In time payouts: the jackpot and other prize will be paid before next draw.
 
-### Draw ID format: HashGame-XRP@5-v1.0#96660001
+### Draw ID format: HashGame-XRP@5-v1.0#98880001
 - XRP denotes all transactions shall be settled exclusively in XRP through xrpl.
 - 5 denotes the JackpotCode length.
 - 1.0 defines the version of game rules, more game rules detail at [Const.js](https://github.com/HashGame1999/HashGameRipple/blob/main/Const.js).
-- 96660001 denotes this draw begins at xrp ledger#96660001.
+- 98880001 denotes this draw begins at xrp ledger#98880001.
 
 ## HashGame XRP@5 Rules:
 - 1 XRP gets you a HashGame code, N XRP gets you N codes.
@@ -21,7 +21,7 @@ HashGame XRP@5 is a online blockchain-based game that's transparent, fair, and v
 ## How to play:
 ### Buy game code:
 -  **GameAccount**(**rXRP75idnwWTuukPeSkpbeeKGkhyysVW8**)
-- Draw#96660001 is composed of xrp ledger from 96660001 to 98880000,
+- Draw#98880001 is composed of xrp ledger from 98880001 to 98881000,
 - During those ledger, payment to the **GameAccount** will get a ticket.
 - A ticket of N code will be generated for a payment larger than N XRP , for example: 
 	- Payment of 1 XRP gets 1 code: first 5 character of payment tx_hash
@@ -38,11 +38,11 @@ HashGame XRP@5 is a online blockchain-based game that's transparent, fair, and v
 - Jackpot: your code is the same with **JakepotCode**.
 
 ### Invite friend: 
-Just tell your friend to set referral address of first payment transaction to your account address.
+Just tell your friend to set referral address of first payment(to GameAccount) to your account address.
 
 ## Promotional Plans
 ### Shareholder Plan: 
-Any XRP holder who send 10000 XRP to **rBoy4AAAAA9qxv7WANSdP5j5y59NP6soJS** before XRP Ledger#96660001 becomes our shareholder, participate in annual dividends.
+Any XRP holder who send 10000 XRP to **rBoy4AAAAA9qxv7WANSdP5j5y59NP6soJS** before XRP Ledger#98880000 becomes our shareholder, participate in annual dividends.
 
 ### Early bird Plan:
 - First player buys 10 code get 160 XRP(from operating fee) award.
@@ -55,6 +55,6 @@ Any XRP holder who send 10000 XRP to **rBoy4AAAAA9qxv7WANSdP5j5y59NP6soJS** befo
 - Hx partner: earn x XRP(from operating fee) commission for every 100 codes your invited players bought.
 
 ## Validate
-You could get all buy and breakdown tx record of every draw through our HashGameRipple Client.
+You could get all buy and breakdown transaction record of every draw through our HashGameRipple Client.
 
 more details and HashGameRipple Client programm at https://github.com/HashGame1999/HashGameRipple
